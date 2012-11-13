@@ -15,7 +15,8 @@ html(lang='en')
         block header
           a(href=locals.url)
             img(src=locals.url+'/images/logo.svg', alt=locals.name)
-          p= locals.description
+          h1= locals.name
+          h2= locals.description
     div#content
       block content
         h2 Welcome to zombocom!

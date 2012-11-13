@@ -1,19 +1,17 @@
-@import url("http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Source+Code+Pro:300,400,600|Cherry+Swash:700&subset=latin,latin-ext")
+@import url("http://fonts.googleapis.com/css?family=Snippet|Arvo|Source+Code+Pro:400,600&subset=latin,latin-ext") 
 
 background-color = #E6E6E6
 font-size = 13px
-font-text = 'Arvo', serif
-
+font-headline = 'Arvo', serif
 font-code = 'Source Code Pro', monospace
-
-font-headline = 'Cherry Swash', cursive
+font-text = 'Snippet', sans-serif
 
 h1, h2, h3, h4, h5, h6, p, blockquote, body
   margin 0
   padding 0
 
 body
-  font-family "Arvo", "Helvetica Neue", Arial, Helvetica, sans-serif
+  font-family font-text
   font-size font-size
   display table-row
   background-color background-color
@@ -26,6 +24,9 @@ body
     padding 2em
     width 20em
     .inner
+      h1
+        display none
+      width 16em
       position fixed
 
   #content
