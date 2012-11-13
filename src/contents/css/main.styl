@@ -1,7 +1,9 @@
 @import url("http://fonts.googleapis.com/css?family=Snippet|Arvo|Source+Code+Pro:400,600&subset=latin,latin-ext") 
+@import "font-awesome/font-awesome.css"
 
 background-color = white
-blue-color = #5f8dd3
+blue = #5f8dd3
+dark-blue = darken(blue, 30)
 font-size = 13px
 font-headline = 'Arvo', serif
 font-code = 'Source Code Pro', monospace
@@ -25,11 +27,15 @@ body
     line-height 2em
 
   a
-    color blue-color
+    color blue
     text-decoration none
 
-  h1, h2, h3, h4
+
+  h2, h3, h4, .subheadline
     font-family font-headline
+
+  h2, h3, h4
+    text-shadow: 1px 1px 1px dark-blue
 
   pre, code
     font-family font-code
@@ -37,13 +43,19 @@ body
   .main
     display table-row
     .sidebar
+      height 80em
       display table-cell
       padding 2em
       width sidebar-width
       background-color sidebar-background
-      box-shadow inset -10px 0 30px -10px gray
+      box-shadow inset -10px 0 30px -15px gray
       h1
         display none
+      ul
+        list-style none
+        padding 0
+
+        
       .fixed-inner
         position fixed
         width sidebar-width

@@ -17,8 +17,7 @@ block content
           a(href=article.url)= article.title
         p
           mixin author(article.metadata.author)
-      section.content!= article.intro
+      section!= article.intro
       if article.hasMore
         p.read-more
           a(href=article.url) read more
-  a(href='archive.html')#archive Visit the archives!

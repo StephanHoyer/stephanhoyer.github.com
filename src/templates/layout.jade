@@ -16,8 +16,15 @@ html(lang='en')
           a(href=locals.url)
             img(src=locals.url+'/images/logo.svg', alt=locals.name)
           h1= locals.name
-          h2= locals.description
-          block header
+          .subheadline= locals.description
+          ul
+            li
+              i.icon-fire
+              a(href=locals.url) latest
+            li
+              i.icon-calendar
+              a(href='archive.html')#archive archives
+
       div.content
         block content
           h2 Welcome to zombocom!
