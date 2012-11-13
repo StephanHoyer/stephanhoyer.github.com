@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stephan Hoyer</title>
+    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://localhost:8080</link>
+    <description>polyglot software development</description>
+    <pubDate>Tue, 31 Jan 2012 15:00:00 +0100</pubDate>
+    <generator>The mighty Wintersmith</generator>
+    <language>en</language>
+    <item>
+      <title>Hello World</title>
+      <link>http://localhost:8080/articles/hello-world/</link>
+      <pubDate>Tue, 31 Jan 2012 15:00:00 +0100</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/hello-world/</guid>
+      <author></author>
+      <description>&lt;p&gt;Welcome to your new wintersmith site mortal.
+
+&lt;/p&gt;
+&lt;p&gt;This is an example of how you can set up a blog with RSS, and an archive using Wintersmith.
+If you want a bare bones example check out the site in &lt;code&gt;examples/basic/&lt;/code&gt; in the repository root or
+use &lt;code&gt;wintersmith new &lt;path&gt; --template basic&lt;/code&gt; when creating a new site.
+
+&lt;/p&gt;
+&lt;p&gt;Site structure:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── config.json                          site configuration &lt;span class=&quot;keyword&quot;&gt;and&lt;/span&gt; metadata
+├── contents
+│   ├── archive.md
+│   ├── articles                         each article is a subfolder of articles
+│   │   ├── another-test
+│   │   │   └── index.md
+│   │   ├── bamboo-cutter
+│   │   │   ├── Taketori_Monogatari.jpg
+│   │   │   └── index.md
+│   │   ├── hello-world
+│   │   │   └── index.md
+│   │   └── red-herring
+│   │       ├── banana.jpg
+│   │       └── index.md
+│   ├── authors                          &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; an author is set in an articles metadata it
+│   │   ├── baker.json                   will be read from here
+│   │   └── the-wintersmith.json
+│   ├── css
+│   │   ├── github.css
+│   │   └── main.css
+│   ├── feed.json                        json page that renders the rss feed to feed.xml
+│   ├── index.json
+└── templates
+    ├── archive.jade
+    ├── article.jade
+    ├── author.jade
+    ├── feed.jade
+    ├── index.jade
+    └── layout.jade&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Articles are sorted by date and the 3 most recent are shown (configurable in &lt;code&gt;config.json&lt;/code&gt;). All other articles
+are avalible via their permalink or the archive page.
+
+&lt;/p&gt;
+&lt;p&gt;Example article/post:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;markdown&quot;&gt;title: My new shiny blog
+author: johndoe
+date: 2012-12-12 12:12
+
+# Hello!
+
+I'm an article. Bla bla bla so interesting.&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+  </channel>
+</rss>
