@@ -1,15 +1,34 @@
+@import url("http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Source+Code+Pro:300,400,600|Cherry+Swash:700&subset=latin,latin-ext")
+
+background-color = #E6E6E6
+font-size = 13px
+font-text = 'Arvo', serif
+
+font-code = 'Source Code Pro', monospace
+
+font-headline = 'Cherry Swash', cursive
+
 h1, h2, h3, h4, h5, h6, p, blockquote, body
-  margin: 0;
-  padding: 0;
+  margin 0
+  padding 0
 
 body
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 2em;
-  display: table-row
+  font-family "Arvo", "Helvetica Neue", Arial, Helvetica, sans-serif
+  font-size font-size
+  display table-row
+  background-color background-color
+
+  p
+    line-height 2em
 
   header
-    display: table-cell;
+    display table-cell
 
   #content
-    max-width: 30em;    
+    max-width 50em
+
+  h1, h2, h3, h4
+    font-family font-headline
+
+  pre, code
+    font-family font-code
