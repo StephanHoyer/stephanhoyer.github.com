@@ -1,7 +1,6 @@
 {
   "output": "../",
   "locals": {
-    "url": "http://localhost:8080",
     "name": "Stephan Hoyer",
     "owner": "Stephan Hoyer",
     "description": "polyglot software development",
