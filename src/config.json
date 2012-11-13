@@ -1,6 +1,7 @@
 {
   "output": "../",
   "locals": {
+    "url": "http://stephanhoyer.github.com",
     "name": "Stephan Hoyer",
     "owner": "Stephan Hoyer",
     "description": "polyglot software development",
