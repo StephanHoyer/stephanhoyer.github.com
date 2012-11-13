@@ -10,17 +10,17 @@ html(lang='en')
       link(rel='stylesheet', href='/css/github.css')
       link(rel='stylesheet', href='/css/main.css')
   body
-    header
-      div.inner
-        block header
+    div.main
+      div.sidebar
+        div.fixed-inner
           a(href=locals.url)
             img(src=locals.url+'/images/logo.svg', alt=locals.name)
           h1= locals.name
           h2= locals.description
-    div#content
-      block content
-        h2 Welcome to zombocom!
-    footer
-      div.inner
-        block footer
-          p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+          block header
+      div.content
+        block content
+          h2 Welcome to zombocom!
+        div.footer
+          block footer
+            p &copy; #{ new Date().getFullYear() } #{ locals.owner }
