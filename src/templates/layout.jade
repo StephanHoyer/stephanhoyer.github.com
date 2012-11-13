@@ -7,7 +7,6 @@ html(lang='en')
         block title
           = locals.name
       link(rel='alternate', href=locals.url+'/feed.xml', type='application/rss+xml', title=locals.description)
-      link(rel='stylesheet', href=locals.url+'/css/github.css')
       link(rel='stylesheet', href=locals.url+'/css/main.css')
   body
     div.main
@@ -37,7 +36,7 @@ html(lang='en')
             #aboutme
               h2 #{ locals.owner }
               p
-                | I'm a german developer woking as freelancer with various
+                | I'm a german software developer freelancing with various
                 | technologies, like 
                 a(href='')= 'node.js'
                 | , 

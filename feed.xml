@@ -10,9 +10,9 @@
     <language>en</language>
     <item>
       <title>Hot stuff</title>
-      <link>http://stephanhoyer.github.com/articles/001%20-%20hello-world/</link>
+      <link>http://stephanhoyer.github.com/articles/001-hello-world/</link>
       <pubDate>Tue, 31 Jan 2012 15:00:00 +0100</pubDate>
-      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/001%20-%20hello-world/</guid>
+      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/001-hello-world/</guid>
       <author></author>
       <description>&lt;p&gt;cool
 
@@ -21,9 +21,9 @@
     </item>
     <item>
       <title>Hello World</title>
-      <link>http://stephanhoyer.github.com/articles/002%20-%20hot%20stuff/</link>
+      <link>http://stephanhoyer.github.com/articles/002-hot%20stuff/</link>
       <pubDate>Tue, 31 Jan 2012 15:00:00 +0100</pubDate>
-      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002%20-%20hot%20stuff/</guid>
+      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002-hot%20stuff/</guid>
       <author></author>
       <description>&lt;p&gt;Welcome to your new wintersmith site mortal.
 

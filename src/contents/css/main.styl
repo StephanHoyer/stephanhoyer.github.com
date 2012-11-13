@@ -1,10 +1,11 @@
 @import url("http://fonts.googleapis.com/css?family=Snippet|Arvo|Source+Code+Pro:400,600&subset=latin,latin-ext") 
 @import "font-awesome/font-awesome.css"
+@import "github.css"
 
 background-color = white
 blue = #5f8dd3
 dark-blue = darken(blue, 30)
-font-size = 13px
+font-size = 14px
 font-headline = 'Arvo', serif
 font-code = 'Source Code Pro', monospace
 font-text = 'Snippet', sans-serif
@@ -68,7 +69,7 @@ body
           margin-left -2em
           padding-left 2em
           box-shadow inset 1px 1px white
-        
+          border-radius: 5px;
       .fixed-inner
         position fixed
         width sidebar-width - 5em
@@ -82,6 +83,7 @@ body
       padding 2em
   .footer
     background-color sidebar-background
+    border-radius: 5px;
     padding 1em
     .me
       float left
