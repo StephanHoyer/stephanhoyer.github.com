@@ -1,0 +1,12 @@
+{
+  "locals": {
+    "url": "http://localhost:8080",
+    "name": "Stephan Hoyer",
+    "owner": "Stephan Hoyer",
+    "description": "polyglot software development",
+    "index_articles": 3
+  },
+  "plugins": [
+    "wintersmith-perian"
+  ]
+}
