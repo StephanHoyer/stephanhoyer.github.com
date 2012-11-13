@@ -30,9 +30,13 @@ body
     color blue
     text-decoration none
 
+  a:visited
+    color bark-blue
+
 
   h2, h3, h4, .subheadline
     font-family font-headline
+    color blue
 
   h2, h3, h4
     text-shadow: 1px 1px 1px dark-blue
@@ -67,7 +71,7 @@ body
         
       .fixed-inner
         position fixed
-        width sidebar-width
+        width sidebar-width - 5em
         font-size 1.5em
         line-height 1.5em
   
@@ -77,5 +81,16 @@ body
       max-width 50em
       padding 2em
   .footer
-    display table-row
+    background-color sidebar-background
+    padding 1em
+    .me
+      float left
+      border 5px solid white
+      border-bottom 20px solid white
+      box-shadow: 1px 1px 5px black
+    #aboutme
+      margin-left 10em
+      .social-links
+        font-size 2em
+        text-shadow: 1px 1px 1px dark-blue
 

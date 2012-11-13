@@ -25,15 +25,6 @@ html(lang='en')
               i.icon-calendar
               a(href='archive.html') archives
             li
-              i.icon-google-plus
-              a(href='https://plus.google.com/110580991801747434649/posts/p/pub') google+
-            li
-              i.icon-twitter
-              a(href='http://twitter.com/cmx66') twitter
-            li
-              i.icon-github
-              a(href='https://github.com/StephanHoyer') github
-            li
               i.icon-user
               a(href='#aboutme') about me
 
@@ -42,4 +33,34 @@ html(lang='en')
           h2 Welcome to zombocom!
         div.footer
           block footer
-            p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+            img(src=locals.url+'/images/me.jpg', class='me', alt=locals.name)
+            #aboutme
+              h2 #{ locals.owner }
+              p
+                | I'm a german developer woking as freelancer with various
+                | technologies, like 
+                a(href='')= 'node.js'
+                | , 
+                a(href='')= 'django'
+                | , 
+                a(href='')= 'AngularJS'
+                | , 
+                a(href='')= 'magento'
+                | . I'm passionate for 
+                strong
+                  open source technology
+                | and 
+                strong
+                  | test- or behaviour-driven-development
+                | .
+                | I love my three kids and I'm also an enthusiastic woodworker.
+              p.social-links
+                a(href='https://plus.google.com/110580991801747434649/posts/p/pub')
+                  i.icon-google-plus
+                | &nbsp;
+                a(href='https://github.com/StephanHoyer')
+                  i.icon-github
+                | &nbsp;
+                a(href='http://twitter.com/cmx66')
+                  i.icon-twitter
+              p &copy; #{ new Date().getFullYear() } #{ locals.owner }
