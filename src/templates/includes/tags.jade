@@ -1,0 +1,9 @@
+mixin tags(article)
+  - var tags = _(article.metadata.tags.split(',')).map(function(tag) {
+  -   return tag.trim();
+  - });
+  p= 'tagged with'
+    each tag in tags
+      span 
+        a(href=locals.url + '/tags.html#' + tag)= tag
+
