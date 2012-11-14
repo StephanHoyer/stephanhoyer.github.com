@@ -26,6 +26,9 @@ html(lang='en')
             li
               i.icon-user
               a(href='#aboutme') about me
+            li
+              i.icon-thumbs-up
+              a(href='mailto:ste.hoyer@gmail.com') hire me
 
       div.content
         block content
@@ -62,4 +65,22 @@ html(lang='en')
                 | &nbsp;
                 a(href='http://twitter.com/cmx66')
                   i.icon-twitter
+              p This site was build using a lot of awesome open source 
+                | technology like 
+                a(href='https://github.com/jnordberg/wintersmith')
+                  | wintersmith
+                | , 
+                a(href='http://nodejs.org/')= 'node.js'
+                | , 
+                a(href='http://www.vim.org/')= 'vim'
+                | , 
+                a(href='http://fortawesome.github.com/Font-Awesome/')
+                  | font-awesome
+                | , 
+                a(href='http://learnboost.github.com/stylus/')= 'stylus'
+                |  and 
+                a(href='http://jade-lang.com/')= 'jade'
               p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+
+
+
