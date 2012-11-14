@@ -12,7 +12,7 @@ block content
 
   - var tags = _.chain(articles).map(function(item) {
   -   return item.index.tags
-  - }).flatten().reduce(function(memo, tag) {
+  - }).flatten().sortBy(_.identity).reduce(function(memo, tag) {
   -   memo[tag] = [];
   -   return memo;
   - }, {}).value();
