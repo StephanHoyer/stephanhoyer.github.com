@@ -39,23 +39,17 @@ html(lang='en')
             #aboutme
               h2 #{ locals.owner }
               p
-                | I'm a german software developer freelancing with various
-                | technologies, like 
-                a(href='http://nodejs.org/')= 'node.js'
-                | , 
-                a(href='https://www.djangoproject.com/')= 'django'
-                | , 
-                a(href='http://angularjs.org/')= 'AngularJS'
-                | , 
-                a(href='http://www.magentocommerce.com/')= 'magento'
-                | . I'm passionate about 
-                strong
-                  | git, open source technology
-                |  and 
-                strong
-                  |  test- or behaviour-driven-development
-                | .
-                | I love my three kids and I'm also an enthusiastic woodworker.
+                :markdown
+                  I'm a german software developer freelancing with various
+                  technologies, like 
+                  [node.js](http://nodejs.org/),
+                  [Django](https://www.djangoproject.com/),
+                  [AngularJS](http://angularjs.org/),
+                  [magento](http://www.magentocommerce.com/).
+                  I'm passionate about **git, open source technology** and 
+                  **test- or behaviour-driven development**. I love my three 
+                  kids and I'm also an enthusiastic woodworker. I'm also 
+                  cofounder of [leipzigJS](http://leipzigjs.github.com/).
               p.social-links
                 a(href='https://plus.google.com/110580991801747434649/posts/p/pub')
                   i.icon-google-plus
@@ -65,21 +59,17 @@ html(lang='en')
                 | &nbsp;
                 a(href='http://twitter.com/cmx66')
                   i.icon-twitter
-              p This site was build using a lot of awesome open source 
-                | technology like 
-                a(href='https://github.com/jnordberg/wintersmith')
-                  | wintersmith
-                | , 
-                a(href='http://nodejs.org/')= 'node.js'
-                | , 
-                a(href='http://www.vim.org/')= 'vim'
-                | , 
-                a(href='http://fortawesome.github.com/Font-Awesome/')
-                  | font-awesome
-                | , 
-                a(href='http://learnboost.github.com/stylus/')= 'stylus'
-                |  and 
-                a(href='http://jade-lang.com/')= 'jade'
+              p 
+                :markdown
+                  This site is hostet with github pages and was build using a 
+                  lot of **awesome** open source technology like 
+                  [wintersmith](https://github.com/jnordberg/wintersmith),
+                  [node.js](http://nodejs.org/),
+                  [vim](http://www.vim.org/),
+                  [font-awesome](http://fortawesome.github.com/Font-Awesome/),
+                  [stylus](http://learnboost.github.com/stylus/) and
+                  [jade](http://jade-lang.com/). Thanks to the authors and
+                  contibutors.
               p &copy; #{ new Date().getFullYear() } #{ locals.owner }
 
 
