@@ -1,0 +1,39 @@
+
+extends layout
+
+block content
+  != page.html
+  - var articles = contents.articles._.directories;
+  - _.each(articles, function(item) {
+  -   item.index.tags = item.index._metadata.tags.split(',').map(function(item) {
+  -     return item.trim()
+  -   });
+  - });
+
+  - var tags = _.chain(articles).map(function(item) {
+  -   return item.index.tags
+  - }).flatten().reduce(function(memo, tag) {
+  -   memo[tag] = [];
+  -   return memo;
+  - }, {}).value();
+
+  - _.each(articles, function(article) {
+  -   _.each(article.index.tags, function(tag) {
+  -     tags[tag].push(article.index);
+  -   });
+  - });
+
+  section.tags
+    ul.index
+      each articles, tag in tags
+        li.tag
+          a(href='#' + tag)= tag
+    ul.articles
+      each articles, tag in tags
+        li.tag(id=tag)= tag
+        ul
+          each article in articles
+            li
+              a(href=article.url)= article.title
+
+

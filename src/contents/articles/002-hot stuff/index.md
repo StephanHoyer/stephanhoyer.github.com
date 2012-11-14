@@ -2,6 +2,7 @@ title: Hello World
 author: stephan-hoyer
 date: 2012-01-31 15:00
 template: article.jade
+tags: foo, baz
 
 Welcome to your new wintersmith site mortal.
 
