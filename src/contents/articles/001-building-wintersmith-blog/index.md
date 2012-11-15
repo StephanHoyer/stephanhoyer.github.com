@@ -85,7 +85,7 @@ $ mkdir src
 $ mv config.json contents templates src
 ```
 
-We want to see the blog in action, right. Cd to the `src` directory and type
+We want to see the blog in action, right? Cd to the `src` directory and type
 
 ```
 $ wintersmith preview
@@ -95,7 +95,7 @@ and head to http://localhost:8080 in the browser. If all went right, you should 
 blog with two example entries.
 
 You want to test deployment to github, so you have to build the static
-html-files for our blog. In order to do so you have to change the build 
+html-files for your blog. In order to do so you have to change the build 
 directory to be the root dir of the repository. Therefor go to `config.json`
 in the `src` folder and add the following line above the `locals`-section:
 
@@ -103,19 +103,31 @@ in the `src` folder and add the following line above the `locals`-section:
   "output": "../",
 ```
 
-It tells wintersmith to create the files in our blog root directory which will
-be our git root. Then you can start the build process:
+It tells wintersmith to create the files in your blog root directory which 
+will be our git root. Then you can start the build process:
 
 ```
 $ wintersmith build
 ```
 
 If you didn't already have, create a git repository in the
-blog directory. Then commit all your changes and push them to your shiny new
+blog directory. Your directory structure should look like this now:
+
+```
+├── .git
+├── archive.html
+├── css
+├── index.html
+├── articles
+├── feed.xml
+└── src
+```
+
+Then commit all your changes and push them to your shiny new
 created github repository called `your-github-name.github.com`.
 
-After _github_ will send you a notification mail, if your website has benn
-deployed. Then you can visit the new blog under
+After that _github_ will send you a notification mail, if your website has
+been deployed. Then you can visit the new blog under
 http://your-github-name.github.com.
 
 Now you can write your first blogpost. Simply create a new directory under

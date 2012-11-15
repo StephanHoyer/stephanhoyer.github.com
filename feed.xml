@@ -91,7 +91,7 @@ the blog to a new directory I called &lt;code&gt;src&lt;/code&gt;
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ mkdir src
 $ mv config.json contents templates src&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We want to see the blog in action, right. Cd to the &lt;code&gt;src&lt;/code&gt; directory and type
+&lt;p&gt;We want to see the blog in action, right? Cd to the &lt;code&gt;src&lt;/code&gt; directory and type
 
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ wintersmith preview&lt;/code&gt;&lt;/pre&gt;
@@ -100,24 +100,34 @@ blog with two example entries.
 
 &lt;/p&gt;
 &lt;p&gt;You want to test deployment to github, so you have to build the static
-html-files for our blog. In order to do so you have to change the build 
+html-files for your blog. In order to do so you have to change the build 
 directory to be the root dir of the repository. Therefor go to &lt;code&gt;config.json&lt;/code&gt;
 in the &lt;code&gt;src&lt;/code&gt; folder and add the following line above the &lt;code&gt;locals&lt;/code&gt;-section:
 
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;  &quot;output&quot;: &quot;../&quot;,&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It tells wintersmith to create the files in our blog root directory which will
-be our git root. Then you can start the build process:
+&lt;p&gt;It tells wintersmith to create the files in your blog root directory which 
+will be our git root. Then you can start the build process:
 
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ wintersmith build&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you didn&apos;t already have, create a git repository in the
-blog directory. Then commit all your changes and push them to your shiny new
+blog directory. Your directory structure should look like this now:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── .git
+├── archive.html
+├── css
+├── index.html
+├── articles
+├── feed.xml
+└── src&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then commit all your changes and push them to your shiny new
 created github repository called &lt;code&gt;your-github-name.github.com&lt;/code&gt;.
 
 &lt;/p&gt;
-&lt;p&gt;After &lt;em&gt;github&lt;/em&gt; will send you a notification mail, if your website has benn
-deployed. Then you can visit the new blog under
+&lt;p&gt;After that &lt;em&gt;github&lt;/em&gt; will send you a notification mail, if your website has
+been deployed. Then you can visit the new blog under
 &lt;a href=&quot;http://your-github-name.github.com&quot;&gt;http://your-github-name.github.com&lt;/a&gt;.
 
 &lt;/p&gt;

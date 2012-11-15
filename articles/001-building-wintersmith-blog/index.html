@@ -106,7 +106,7 @@ the blog to a new directory I called <code>src</code>
 </p>
 <pre><code>$ mkdir src
 $ mv config.json contents templates src</code></pre>
-<p>We want to see the blog in action, right. Cd to the <code>src</code> directory and type
+<p>We want to see the blog in action, right? Cd to the <code>src</code> directory and type
 
 </p>
 <pre><code>$ wintersmith preview</code></pre>
@@ -115,24 +115,34 @@ blog with two example entries.
 
 </p>
 <p>You want to test deployment to github, so you have to build the static
-html-files for our blog. In order to do so you have to change the build 
+html-files for your blog. In order to do so you have to change the build 
 directory to be the root dir of the repository. Therefor go to <code>config.json</code>
 in the <code>src</code> folder and add the following line above the <code>locals</code>-section:
 
 </p>
 <pre><code>  "output": "../",</code></pre>
-<p>It tells wintersmith to create the files in our blog root directory which will
-be our git root. Then you can start the build process:
+<p>It tells wintersmith to create the files in your blog root directory which 
+will be our git root. Then you can start the build process:
 
 </p>
 <pre><code>$ wintersmith build</code></pre>
 <p>If you didn&apos;t already have, create a git repository in the
-blog directory. Then commit all your changes and push them to your shiny new
+blog directory. Your directory structure should look like this now:
+
+</p>
+<pre><code>├── .git
+├── archive.html
+├── css
+├── index.html
+├── articles
+├── feed.xml
+└── src</code></pre>
+<p>Then commit all your changes and push them to your shiny new
 created github repository called <code>your-github-name.github.com</code>.
 
 </p>
-<p>After <em>github</em> will send you a notification mail, if your website has benn
-deployed. Then you can visit the new blog under
+<p>After that <em>github</em> will send you a notification mail, if your website has
+been deployed. Then you can visit the new blog under
 <a href="http://your-github-name.github.com">http://your-github-name.github.com</a>.
 
 </p>
