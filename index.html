@@ -25,76 +25,43 @@
       <div class="content">
         <article class="post">
           <header>
-            <h2><a href="/articles/002-hot%20stuff/">Hello World</a></h2>
+            <h2><a href="/articles/001-building-wintersmith-blog/">Developer Blog using wintersmith and github pages</a></h2>
             <p>
-                      <p>tagged with<span> <a href="http://stephanhoyer.github.com/tags.html#foo">foo</a></span><span> <a href="http://stephanhoyer.github.com/tags.html#baz">baz</a></span></p><span class="author">by&nbsp;<a href="mailto:ste.hoyer@gmail.com">Stephan Hoyer</a></span>
+                      <p>tagged with<span> <a href="http://stephanhoyer.github.com/tags.html#node.js">node.js</a></span></p><span class="author">by&nbsp;<a href="mailto:ste.hoyer@gmail.com">Stephan Hoyer</a></span>
             </p>
           </header>
-          <section><p>Welcome to your new wintersmith site mortal.
+          <section><p>For a long time, I want to be able to share some thoughts about live in a
+blog every now and than. I made serveral attempts to do so. I tried
+<a href="http://tumblr.com">tumblr</a> but it wasn&apos;t as flexible as i need it. I tried 
+<a href="http://octopress.org">octopress</a>, but i&apos;m not as
+familiar with ruby as I probably should be. Never tried wordpress, since it
+is to much overhead and written in bad ol&apos; php, which I want to avoid for
+reasons. Also I want to write my posts using a simple markup language like
+<a href="http://daringfireball.net/projects/markdown/">markdown</a> or 
+<a href="http://google.com">restuctured text</a>, 
+first for versioning in git, second for using my beloved vim for editing. 
 
 </p>
-<p>This is an example of how you can set up a blog with RSS, and an archive using Wintersmith.
-If you want a bare bones example check out the site in <code>examples/basic/</code> in the repository root or
-use <code>wintersmith new &lt;path&gt; --template basic</code> when creating a new site.
+<p>Since I use node.js a while now, i searched for
+ports of octopress in node and found
+<a href="https://github.com/jnordberg/wintersmith">wintersmith</a>, what i&apos;m using now.
 
 </p>
-<p>Site structure:
+<p>It has great flexibility, is super simple to use and to extend. It works good
+on <a href="http://pages.github.com/">github pages</a>, what i use as hosting.
 
 </p>
-<pre><code>├── config.json                          site configuration <span class="keyword">and</span> metadata
-├── contents
-│   ├── archive.md
-│   ├── articles                         each article is a subfolder of articles
-│   │   ├── another-test
-│   │   │   └── index.md
-│   │   ├── bamboo-cutter
-│   │   │   ├── Taketori_Monogatari.jpg
-│   │   │   └── index.md
-│   │   ├── hello-world
-│   │   │   └── index.md
-│   │   └── red-herring
-│   │       ├── banana.jpg
-│   │       └── index.md
-│   ├── authors                          <span class="keyword">if</span> an author is set in an articles metadata it
-│   │   ├── baker.json                   will be read from here
-│   │   └── the-wintersmith.json
-│   ├── css
-│   │   ├── github.css
-│   │   └── main.css
-│   ├── feed.json                        json page that renders the rss feed to feed.xml
-│   ├── index.json
-└── templates
-    ├── archive.jade
-    ├── article.jade
-    ├── author.jade
-    ├── feed.jade
-    ├── index.jade
-    └── layout.jade</code></pre>
-<p>Articles are sorted by date and the 3 most recent are shown (configurable in <code>config.json</code>). All other articles
-are avalible via their permalink or the archive page.
-
-</p>
-<p>Example article/post:
-
-</p>
-<pre><code class="markdown">title: My new shiny blog
-author: johndoe
-date: 2012-12-12 12:12
-
-# Hello!
-
-I'm an article. Bla bla bla so interesting.</code></pre>
 </section>
+          <p class="read-more"><a href="/articles/001-building-wintersmith-blog/">read more</a></p>
         </article>
         <article class="post">
           <header>
-            <h2><a href="/articles/001-hello-world/">Hot stuff</a></h2>
+            <h2><a href="/articles/002-add-tags-to-wintersmith-blog/">Adding tags functionality to wintersmith blog</a></h2>
             <p>
-                      <p>tagged with<span> <a href="http://stephanhoyer.github.com/tags.html#foo">foo</a></span><span> <a href="http://stephanhoyer.github.com/tags.html#bar">bar</a></span></p><span class="author">by&nbsp;<a href="mailto:ste.hoyer@gmail.com">Stephan Hoyer</a></span>
+                      <p>tagged with<span> <a href="http://stephanhoyer.github.com/tags.html#node.js">node.js</a></span></p><span class="author">by&nbsp;<a href="mailto:ste.hoyer@gmail.com">Stephan Hoyer</a></span>
             </p>
           </header>
-          <section><p>cool
-
+          <section><p>TODO!
 </p>
 </section>
         </article>

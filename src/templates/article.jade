@@ -5,13 +5,21 @@ block prepend title
   #{ page.title } -
 
 block header
-  include includes/author
-  a.back(href='/') << back to index
-  h1= page.title
-  p
-    | written by:
-    mixin author(page.metadata.author)
 
 block content
+  include includes/author
+  include includes/tags
+  a.back(href='/') 
+    i.icon-chevron-left
+    | &nbsp;back to index
+  h1= page.title
+  p
+    mixin tags(page)
+    mixin author(page.metadata.author)
+
   article.post
-    section.content!= page.html
+    section!= page.html
+
+  a.back(href='/') 
+    i.icon-chevron-left
+    | &nbsp;back to index

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      <Developer Blog using wintersmith and github pages>-</Developer Blog using wintersmith and github pages>Stephan Hoyer
+    </title>
+    <link rel="alternate" href="http://stephanhoyer.github.com/feed.xml" type="application/rss+xml" title="fun driven software development">
+    <link rel="stylesheet" href="http://stephanhoyer.github.com/css/main.css">
+  </head>
+  <body>
+    <div class="main">
+      <div class="sidebar">
+        <div class="fixed-inner"><a href="http://stephanhoyer.github.com"><img src="http://stephanhoyer.github.com/images/logo.svg" alt="Stephan Hoyer"></a>
+          <h1>Stephan Hoyer</h1>
+          <div class="subheadline">fun driven software development</div>
+          <ul>
+            <li><i class="icon-bolt"></i><a href="http://stephanhoyer.github.com">latest</a></li>
+            <li><i class="icon-calendar"></i><a href="http://stephanhoyer.github.com/archive.html">by date</a></li>
+            <li><i class="icon-tag"></i><a href="http://stephanhoyer.github.com/tags.html">by tags</a></li>
+            <li><i class="icon-user"></i><a href="#aboutme">about me</a></li>
+            <li><i class="icon-thumbs-up"></i><a href="mailto:ste.hoyer@gmail.com">hire me</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content"><a href="/" class="back"> <i class="icon-chevron-left"></i>&nbsp;back to index</a>
+        <h1>Developer Blog using wintersmith and github pages</h1>
+        <p>
+                  <p>tagged with<span> <a href="http://stephanhoyer.github.com/tags.html#node.js">node.js</a></span></p><span class="author">by&nbsp;<a href="mailto:ste.hoyer@gmail.com">Stephan Hoyer</a></span>
+        </p>
+        <article class="post">
+          <section><p>For a long time, I want to be able to share some thoughts about live in a
+blog every now and than. I made serveral attempts to do so. I tried
+<a href="http://tumblr.com">tumblr</a> but it wasn&apos;t as flexible as i need it. I tried 
+<a href="http://octopress.org">octopress</a>, but i&apos;m not as
+familiar with ruby as I probably should be. Never tried wordpress, since it
+is to much overhead and written in bad ol&apos; php, which I want to avoid for
+reasons. Also I want to write my posts using a simple markup language like
+<a href="http://daringfireball.net/projects/markdown/">markdown</a> or 
+<a href="http://google.com">restuctured text</a>, 
+first for versioning in git, second for using my beloved vim for editing. 
+
+</p>
+<p>Since I use node.js a while now, i searched for
+ports of octopress in node and found
+<a href="https://github.com/jnordberg/wintersmith">wintersmith</a>, what i&apos;m using now.
+
+</p>
+<p>It has great flexibility, is super simple to use and to extend. It works good
+on <a href="http://pages.github.com/">github pages</a>, what i use as hosting.
+
+</p>
+<h2>Setup</h2>
+<p>So here is how to setup. First you have to install
+<a href="http://nodejs.org"><strong>node.js</strong></a> as showed on the node.js
+<a href="http://nodejs.org">homepage</a>. Because of the awesomenes of 
+<a href="http://npmjs.org"><strong>npm</strong></a>, installing wintersmith is easy:
+
+</p>
+<pre><code>$ npm install wintersmith -g</code></pre>
+<p>That gives you - besides the library - a binary where you can run serveral
+tasks. First one is to create your blog:
+
+</p>
+<pre><code>$ wintersmith <span class="keyword">new</span> path/to/my-shiny-<span class="keyword">new</span>-blog</code></pre>
+<p>That creates a file stucture and some basic posts for you:
+
+</p>
+<pre><code>├── config.json                site configuration <span class="keyword">and</span> metadata
+├── contents
+│   ├── archive.md
+│   ├── articles               each article is a subfolder of articles
+│   │   ├── another-test
+│   │   │   └── index.md
+│   │   ├── bamboo-cutter
+│   │   │   ├── Taketori_Monogatari.jpg
+│   │   │   └── index.md
+│   │   ├── hello-world
+│   │   │   └── index.md
+│   │   └── red-herring
+│   │       ├── banana.jpg
+│   │       └── index.md
+│   ├── authors                <span class="keyword">if</span> an author is set in an articles metadata it
+│   │   ├── baker.json         will be read from here
+│   │   └── the-wintersmith.json
+│   ├── css
+│   │   ├── github.css
+│   │   └── main.css
+│   ├── feed.json              json page that renders the rss feed to feed.xml
+│   ├── index.json
+└── templates
+    ├── archive.jade
+    ├── article.jade
+    ├── author.jade
+    ├── feed.jade
+    ├── index.jade
+    └── layout.jade</code></pre>
+<p>You can see that it really takes a few files to drive a wintersmith blog. Most
+of them are templates and the blog posts itself. Besides that there are config
+and CSS files.
+
+</p>
+<p>Since <em>github</em> serves the page from the base dir of the repo, we have to move
+the blog to a new directory I called <code>src</code>
+
+</p>
+<pre><code>$ mkdir src
+$ mv config.json contents templates src</code></pre>
+<p>We want to see the blog in action, right. Cd to the <code>src</code> directory and type
+
+</p>
+<pre><code>$ wintersmith preview</code></pre>
+<p>and head to <a href="http://localhost:8080">http://localhost:8080</a> in the browser. If all went right, you should see a
+blog with two example entries.
+
+</p>
+<p>You want to test deployment to github, so you have to build the static
+html-files for our blog. In order to do so you have to change the build 
+directory to be the root dir of the repository. Therefor go to <code>config.json</code>
+in the <code>src</code> folder and add the following line above the <code>locals</code>-section:
+
+</p>
+<pre><code>  "output": "../",</code></pre>
+<p>It tells wintersmith to create the files in our blog root directory which will
+be our git root. Then you can start the build process:
+
+</p>
+<pre><code>$ wintersmith build</code></pre>
+<p>If you didn&apos;t already have, create a git repository in the
+blog directory. Then commit all your changes and push them to your shiny new
+created github repository called <code>your-github-name.github.com</code>.
+
+</p>
+<p>After <em>github</em> will send you a notification mail, if your website has benn
+deployed. Then you can visit the new blog under
+<a href="http://your-github-name.github.com">http://your-github-name.github.com</a>.
+
+</p>
+<p>Now you can write your first blogpost. Simply create a new directory under
+<code>src/articles</code> or use one of the example posts and change it appropriatly.
+
+</p>
+<h2>Tweeks</h2>
+<h3>Base URL</h3>
+<p>As webdeveloper you now the problems that occur when using relativ links in
+images, css and js files and of cause links. Thats why you always want to uses
+absolute urls. Wintersmith provides an environment variable called
+<code>locals.url</code> what you can use in templates. The problem is, that it has to be
+different in preview mode (<a href="http://localhost:8080">http://localhost:8080</a>) and build mode
+(<a href="http://your-github-name.github.com">http://your-github-name.github.com</a>). I solved this using two different config
+files, the existing on for preview, and a treaked one for build. When calling
+to build the site, you can specify a custom config file to use:
+
+</p>
+<pre><code>$ wintersmith build -c config.build.json</code></pre>
+<h3>Using Stylus</h3>
+<p>Since there are CSS preprocessors out there, you didn&apos;t want to work with
+plain CSS anymore, right? That&apos;s a problem already solved by
+<code>wintersmith-perian</code> plugin. Simply install it via npm
+
+</p>
+<pre><code>$ npm install wintersmith-perian -g</code></pre>
+<p>After that you only need to tell wintersmith, that there is a new plugin to
+load by altering the config file and adding
+
+</p>
+<pre><code>  "plugins": [
+    "wintersmith-perian"
+  ],</code></pre>
+<p>above the <code>locals</code>-object. From now on, all files named <code>*.styl</code> will be compiled
+to CSS live in preview mode and also during build step.
+
+</p>
+<p>Hope this helps setting up the next awesome developer blog.
+</p>
+</section>
+        </article><a href="/" class="back"> <i class="icon-chevron-left"></i>&nbsp;back to index</a>
+        <div class="footer"><img src="http://stephanhoyer.github.com/images/me.jpg" alt="Stephan Hoyer" class="me">
+          <div id="aboutme">
+            <h2>Stephan Hoyer</h2>
+            <p><p>I&apos;m a german software developer freelancing with various
+technologies, like 
+<a href="http://nodejs.org/">node.js</a>,
+<a href="https://www.djangoproject.com/">Django</a>,
+<a href="http://angularjs.org/">AngularJS</a>,
+<a href="http://www.magentocommerce.com/">magento</a>.
+I&apos;m passionate about <strong>git, open source technology</strong> and 
+<strong>test- or behaviour-driven development</strong>. I love my three 
+kids and I&apos;m an enthusiastic woodworker. I&apos;m also 
+cofounder of <a href="http://leipzigjs.github.com/">leipzigJS</a>.</p>
+
+            </p>
+            <p class="social-links"><a href="https://plus.google.com/110580991801747434649/posts/p/pub"><i class="icon-google-plus"></i></a>&nbsp;<a href="https://github.com/StephanHoyer"><i class="icon-github"></i></a>&nbsp;<a href="http://twitter.com/cmx66"><i class="icon-twitter"></i></a></p>
+            <p> <p>This site is hostet with github pages and was build using a 
+lot of <strong>awesome</strong> open source technology like 
+<a href="https://github.com/jnordberg/wintersmith">wintersmith</a>,
+<a href="http://nodejs.org/">node.js</a>,
+<a href="http://www.vim.org/">vim</a>,
+<a href="http://fortawesome.github.com/Font-Awesome/">font-awesome</a>,
+<a href="http://learnboost.github.com/stylus/">stylus</a> and
+<a href="http://jade-lang.com/">jade</a>. Thanks to the authors and
+contibutors.</p>
+
+            </p>
+            <p>&copy; 2012 Stephan Hoyer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

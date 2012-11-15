@@ -1,18 +1,17 @@
-title: Develpoer Blog using wintersmith and github pages
+title: Developer Blog using wintersmith and github pages
 author: stephan-hoyer
 date: 2012-11-15 8:11
 template: article.jade
 tags: node.js
 
-## Develpoer Blog using wintersmith and github pages
 For a long time, I want to be able to share some thoughts about live in a
 blog every now and than. I made serveral attempts to do so. I tried
 [tumblr](http://tumblr.com) but it wasn't as flexible as i need it. I tried 
-[octopress](http://octopress.foo.bar.baz.com), but i'm not as
+[octopress](http://octopress.org), but i'm not as
 familiar with ruby as I probably should be. Never tried wordpress, since it
 is to much overhead and written in bad ol' php, which I want to avoid for
 reasons. Also I want to write my posts using a simple markup language like
-[markdown](http://www.daring-fireball.com/markdown) or 
+[markdown](http://daringfireball.net/projects/markdown/) or 
 [restuctured text](http://google.com), 
 first for versioning in git, second for using my beloved vim for editing. 
 
@@ -21,24 +20,24 @@ ports of octopress in node and found
 [wintersmith](https://github.com/jnordberg/wintersmith), what i'm using now.
 
 It has great flexibility, is super simple to use and to extend. It works good
-on [github pages](https://github.com/pages), what i use as hosting.
+on [github pages](http://pages.github.com/), what i use as hosting.
 
-### Setup
+## Setup
 
 So here is how to setup. First you have to install
 [**node.js**](http://nodejs.org) as showed on the node.js
 [homepage](http://nodejs.org). Because of the awesomenes of 
-[**npm**](http://npm.org), installing wintersmith is easy
+[**npm**](http://npmjs.org), installing wintersmith is easy:
 
 ```
-npm install wintersmith -g
+$ npm install wintersmith -g
 ```
 
 That gives you - besides the library - a binary where you can run serveral
 tasks. First one is to create your blog:
 
 ```
-wintersmith new path/to/my-shiny-new-blog
+$ wintersmith new path/to/my-shiny-new-blog
 ```
 
 That creates a file stucture and some basic posts for you:
@@ -122,9 +121,9 @@ http://your-github-name.github.com.
 Now you can write your first blogpost. Simply create a new directory under
 `src/articles` or use one of the example posts and change it appropriatly.
 
-### Tweeks
+## Tweeks
 
-#### Base URL
+### Base URL
 
 As webdeveloper you now the problems that occur when using relativ links in
 images, css and js files and of cause links. Thats why you always want to uses
@@ -139,7 +138,7 @@ to build the site, you can specify a custom config file to use:
 $ wintersmith build -c config.build.json
 ```
 
-#### Using Stylus
+### Using Stylus
 
 Since there are CSS preprocessors out there, you didn't want to work with
 plain CSS anymore, right? That's a problem already solved by
@@ -155,10 +154,10 @@ load by altering the config file and adding
 ```
   "plugins": [
     "wintersmith-perian"
-  ]
+  ],
 ```
 
-below the `locals`-object. From now on, all files named `.styl` will be compiled
+above the `locals`-object. From now on, all files named `*.styl` will be compiled
 to CSS live in preview mode and also during build step.
 
 Hope this helps setting up the next awesome developer blog.
