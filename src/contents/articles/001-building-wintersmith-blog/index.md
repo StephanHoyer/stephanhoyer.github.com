@@ -4,9 +4,9 @@ date: 2012-11-15 8:11
 template: article.jade
 tags: node.js
 
-For a long time, I want to be able to share some thoughts about live in a
+For a long time, I want to be able to share some thoughts about life in a
 blog every now and than. I made serveral attempts to do so. I tried
-[tumblr](http://tumblr.com) but it wasn't as flexible as i need it. I tried 
+[tumblr](http://tumblr.com) but it wasn't as flexible as I need it. I tried 
 [octopress](http://octopress.org), but i'm not as
 familiar with ruby as I probably should be. Never tried wordpress, since it
 is to much overhead and written in bad ol' php, which I want to avoid for

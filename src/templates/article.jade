@@ -19,7 +19,20 @@ block content
 
   article.post
     section!= page.html
+    #disqus_thread
 
   a.back(href='/') 
     i.icon-chevron-left
     | &nbsp;back to index
+
+  script(type='text/javascript', async, src='http://stephanhoyer.disqus.com/embed.js')
+
+  noscript
+    | Please enable JavaScript to view the 
+    a(href='http://disqus.com/?ref_noscript')
+      | comments powered by Disqus.
+    a(href='http://disqus.com', class='dsq-brlink')
+      | comments powered by 
+      span(class='logo-disqus')
+        | Disqus
+        
