@@ -5,9 +5,19 @@
     <atom:link href="http://stephanhoyer.github.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://stephanhoyer.github.com</link>
     <description>fun driven software development</description>
-    <pubDate>Thu, 15 Nov 2012 08:11:00 +0100</pubDate>
+    <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
     <generator>The mighty Wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Adding tags functionality to wintersmith blog</title>
+      <link>http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</link>
+      <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
+      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</guid>
+      <author></author>
+      <description>&lt;p&gt;TODO!
+&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Developer Blog using wintersmith and github pages</title>
       <link>http://stephanhoyer.github.com/articles/001-building-wintersmith-blog/</link>
@@ -167,16 +177,6 @@ to CSS live in preview mode and also during build step.
 
 &lt;/p&gt;
 &lt;p&gt;Hope this helps setting up the next awesome developer blog.
-&lt;/p&gt;
-</description>
-    </item>
-    <item>
-      <title>Adding tags functionality to wintersmith blog</title>
-      <link>http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</link>
-      <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
-      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</guid>
-      <author></author>
-      <description>&lt;p&gt;TODO!
 &lt;/p&gt;
 </description>
     </item>
