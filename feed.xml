@@ -5,19 +5,9 @@
     <atom:link href="http://stephanhoyer.github.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://stephanhoyer.github.com</link>
     <description>fun driven software development</description>
-    <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
+    <pubDate>Thu, 15 Nov 2012 08:11:00 +0100</pubDate>
     <generator>The mighty Wintersmith</generator>
     <language>en</language>
-    <item>
-      <title>Adding tags functionality to wintersmith blog</title>
-      <link>http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</link>
-      <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
-      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</guid>
-      <author></author>
-      <description>&lt;p&gt;TODO!
-&lt;/p&gt;
-</description>
-    </item>
     <item>
       <title>Developer Blog using wintersmith and github pages</title>
       <link>http://stephanhoyer.github.com/articles/001-building-wintersmith-blog/</link>
@@ -145,15 +135,15 @@ been deployed. Then you can visit the new blog under
 &lt;code&gt;src/articles&lt;/code&gt; or use one of the example posts and change it appropriatly.
 
 &lt;/p&gt;
-&lt;h2&gt;Tweeks&lt;/h2&gt;
+&lt;h2&gt;Tweaks&lt;/h2&gt;
 &lt;h3&gt;Base URL&lt;/h3&gt;
-&lt;p&gt;As webdeveloper you now the problems that occur when using relativ links in
-images, css and js files and of cause links. Thats why you always want to uses
+&lt;p&gt;As webdeveloper you know the problems that occur when using relativ links in
+images, css and js files and of cause links. Thats why you always want to use
 absolute urls. Wintersmith provides an environment variable called
-&lt;code&gt;locals.url&lt;/code&gt; what you can use in templates. The problem is, that it has to be
+&lt;code&gt;locals.url&lt;/code&gt; which you can use in templates. The problem is, that it has to be
 different in preview mode (&lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt;) and build mode
 (&lt;a href=&quot;http://your-github-name.github.com&quot;&gt;http://your-github-name.github.com&lt;/a&gt;). I solved this using two different config
-files, the existing on for preview, and a treaked one for build. When calling
+files, the existing on for preview, and a tweaked one for build. When calling
 to build the site, you can specify a custom config file to use:
 
 &lt;/p&gt;
@@ -177,6 +167,16 @@ to CSS live in preview mode and also during build step.
 
 &lt;/p&gt;
 &lt;p&gt;Hope this helps setting up the next awesome developer blog.
+&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Adding tags functionality to wintersmith blog</title>
+      <link>http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</link>
+      <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
+      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</guid>
+      <author></author>
+      <description>&lt;p&gt;TODO!
 &lt;/p&gt;
 </description>
     </item>

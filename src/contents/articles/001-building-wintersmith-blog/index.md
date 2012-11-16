@@ -133,17 +133,17 @@ http://your-github-name.github.com.
 Now you can write your first blogpost. Simply create a new directory under
 `src/articles` or use one of the example posts and change it appropriatly.
 
-## Tweeks
+## Tweaks
 
 ### Base URL
 
-As webdeveloper you now the problems that occur when using relativ links in
-images, css and js files and of cause links. Thats why you always want to uses
+As webdeveloper you know the problems that occur when using relativ links in
+images, css and js files and of cause links. Thats why you always want to use
 absolute urls. Wintersmith provides an environment variable called
-`locals.url` what you can use in templates. The problem is, that it has to be
+`locals.url` which you can use in templates. The problem is, that it has to be
 different in preview mode (http://localhost:8080) and build mode
 (http://your-github-name.github.com). I solved this using two different config
-files, the existing on for preview, and a treaked one for build. When calling
+files, the existing on for preview, and a tweaked one for build. When calling
 to build the site, you can specify a custom config file to use:
 
 ```
