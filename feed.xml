@@ -2,179 +2,27 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stephan Hoyer</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
+    <atom:link href="http://stephanhoyer.github.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://stephanhoyer.github.com</link>
     <description>fun driven software development</description>
-    <pubDate>Thu, 15 Nov 2012 08:11:00 +0100</pubDate>
+    <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
     <generator>The mighty Wintersmith</generator>
     <language>en</language>
     <item>
-      <title>Developer Blog using wintersmith and github pages</title>
-      <link>http://localhost:8080/articles/001-building-wintersmith-blog/</link>
-      <pubDate>Thu, 15 Nov 2012 08:11:00 +0100</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/001-building-wintersmith-blog/</guid>
+      <title>Adding tags functionality to wintersmith blog</title>
+      <link>http://stephanhoyer.github.com/articles/003-add-tags-to-wintersmith-blog/</link>
+      <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
+      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/003-add-tags-to-wintersmith-blog/</guid>
       <author></author>
-      <description>&lt;p&gt;For a long time, I want to be able to share some thoughts about life in a
-blog every now and than. I made serveral attempts to do so. I tried
-&lt;a href=&quot;http://tumblr.com&quot;&gt;tumblr&lt;/a&gt; but it wasn&apos;t as flexible as I need it. I tried 
-&lt;a href=&quot;http://octopress.org&quot;&gt;octopress&lt;/a&gt;, but i&apos;m not as
-familiar with ruby as I probably should be. Never tried wordpress, since it
-is to much overhead and written in bad ol&apos; php, which I want to avoid for
-reasons. Also I want to write my posts using a simple markup language like
-&lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;markdown&lt;/a&gt; or 
-&lt;a href=&quot;http://google.com&quot;&gt;restuctured text&lt;/a&gt;, 
-first for versioning in git, second for using my beloved vim for editing. 
-
-&lt;/p&gt;
-&lt;p&gt;Since I use node.js a while now, i searched for
-ports of octopress in node and found
-&lt;a href=&quot;https://github.com/jnordberg/wintersmith&quot;&gt;wintersmith&lt;/a&gt;, what i&apos;m using now.
-
-&lt;/p&gt;
-&lt;p&gt;It has great flexibility, is super simple to use and to extend. It works good
-on &lt;a href=&quot;http://pages.github.com/&quot;&gt;github pages&lt;/a&gt;, what i use as hosting.
-
-&lt;/p&gt;
-&lt;h2&gt;Setup&lt;/h2&gt;
-&lt;p&gt;So here is how to setup. First you have to install
-&lt;a href=&quot;http://nodejs.org&quot;&gt;&lt;strong&gt;node.js&lt;/strong&gt;&lt;/a&gt; as showed on the node.js
-&lt;a href=&quot;http://nodejs.org&quot;&gt;homepage&lt;/a&gt;. Because of the awesomenes of 
-&lt;a href=&quot;http://npmjs.org&quot;&gt;&lt;strong&gt;npm&lt;/strong&gt;&lt;/a&gt;, installing wintersmith is easy:
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install wintersmith -g&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That gives you - besides the library - a binary where you can run serveral
-tasks. First one is to create your blog:
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ wintersmith &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; path/to/my-shiny-&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;-blog&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That creates a file stucture and some basic posts for you:
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;├── config.json                site configuration &lt;span class=&quot;keyword&quot;&gt;and&lt;/span&gt; metadata
-├── contents
-│   ├── archive.md
-│   ├── articles               each article is a subfolder of articles
-│   │   ├── another-test
-│   │   │   └── index.md
-│   │   ├── bamboo-cutter
-│   │   │   ├── Taketori_Monogatari.jpg
-│   │   │   └── index.md
-│   │   ├── hello-world
-│   │   │   └── index.md
-│   │   └── red-herring
-│   │       ├── banana.jpg
-│   │       └── index.md
-│   ├── authors                &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; an author is set in an articles metadata it
-│   │   ├── baker.json         will be read from here
-│   │   └── the-wintersmith.json
-│   ├── css
-│   │   ├── github.css
-│   │   └── main.css
-│   ├── feed.json              json page that renders the rss feed to feed.xml
-│   ├── index.json
-└── templates
-    ├── archive.jade
-    ├── article.jade
-    ├── author.jade
-    ├── feed.jade
-    ├── index.jade
-    └── layout.jade&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can see that it really takes a few files to drive a wintersmith blog. Most
-of them are templates and the blog posts itself. Besides that there are config
-and CSS files.
-
-&lt;/p&gt;
-&lt;p&gt;Since &lt;em&gt;github&lt;/em&gt; serves the page from the base dir of the repo, we have to move
-the blog to a new directory I called &lt;code&gt;src&lt;/code&gt;
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ mkdir src
-$ mv config.json contents templates src&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We want to see the blog in action, right? Cd to the &lt;code&gt;src&lt;/code&gt; directory and type
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ wintersmith preview&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and head to &lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt; in the browser. If all went right, you should see a
-blog with two example entries.
-
-&lt;/p&gt;
-&lt;p&gt;You want to test deployment to github, so you have to build the static
-html-files for your blog. In order to do so you have to change the build 
-directory to be the root dir of the repository. Therefor go to &lt;code&gt;config.json&lt;/code&gt;
-in the &lt;code&gt;src&lt;/code&gt; folder and add the following line above the &lt;code&gt;locals&lt;/code&gt;-section:
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  &quot;output&quot;: &quot;../&quot;,&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It tells wintersmith to create the files in your blog root directory which 
-will be our git root. Then you can start the build process:
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ wintersmith build&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you didn&apos;t already have, create a git repository in the
-blog directory. Your directory structure should look like this now:
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;├── .git
-├── archive.html
-├── css
-├── index.html
-├── articles
-├── feed.xml
-└── src&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then commit all your changes and push them to your shiny new
-created github repository called &lt;code&gt;your-github-name.github.com&lt;/code&gt;.
-
-&lt;/p&gt;
-&lt;p&gt;After that &lt;em&gt;github&lt;/em&gt; will send you a notification mail, if your website has
-been deployed. Then you can visit the new blog under
-&lt;a href=&quot;http://your-github-name.github.com&quot;&gt;http://your-github-name.github.com&lt;/a&gt;.
-
-&lt;/p&gt;
-&lt;p&gt;Now you can write your first blogpost. Simply create a new directory under
-&lt;code&gt;src/articles&lt;/code&gt; or use one of the example posts and change it appropriatly.
-
-&lt;/p&gt;
-&lt;h2&gt;Tweaks&lt;/h2&gt;
-&lt;h3&gt;Base URL&lt;/h3&gt;
-&lt;p&gt;As webdeveloper you know the problems that occur when using relativ links in
-images, css and js files and of cause links. Thats why you always want to use
-absolute urls. Wintersmith provides an environment variable called
-&lt;code&gt;locals.url&lt;/code&gt; which you can use in templates. The problem is, that it has to be
-different in preview mode (&lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt;) and build mode
-(&lt;a href=&quot;http://your-github-name.github.com&quot;&gt;http://your-github-name.github.com&lt;/a&gt;). I solved this using two different config
-files, the existing on for preview, and a tweaked one for build. When calling
-to build the site, you can specify a custom config file to use:
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ wintersmith build -c config.build.json&lt;/code&gt;&lt;/pre&gt;
-&lt;h3&gt;Using Stylus&lt;/h3&gt;
-&lt;p&gt;Since there are CSS preprocessors out there, you didn&apos;t want to work with
-plain CSS anymore, right? That&apos;s a problem already solved by
-&lt;code&gt;wintersmith-perian&lt;/code&gt; plugin. Simply install it via npm
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install wintersmith-perian -g&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;After that you only need to tell wintersmith, that there is a new plugin to
-load by altering the config file and adding
-
-&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  &quot;plugins&quot;: [
-    &quot;wintersmith-perian&quot;
-  ],&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;above the &lt;code&gt;locals&lt;/code&gt;-object. From now on, all files named &lt;code&gt;*.styl&lt;/code&gt; will be compiled
-to CSS live in preview mode and also during build step.
-
-&lt;/p&gt;
-&lt;p&gt;Hope this helps setting up the next awesome developer blog.
+      <description>&lt;p&gt;TODO!
 &lt;/p&gt;
 </description>
     </item>
     <item>
       <title>Testing JavaScript with test'em</title>
-      <link>http://localhost:8080/articles/002-testing-js-with-testem/</link>
+      <link>http://stephanhoyer.github.com/articles/002-testing-js-with-testem/</link>
       <pubDate>Thu, 22 Nov 2012 11:11:00 +0100</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/002-testing-js-with-testem/</guid>
+      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002-testing-js-with-testem/</guid>
       <author></author>
       <description>&lt;p&gt;Frontend JavaScript testing has always been painfull, that&apos;s why most people
 avoid it, although there writing tests for their backend code.
@@ -379,12 +227,164 @@ config file:
 </description>
     </item>
     <item>
-      <title>Adding tags functionality to wintersmith blog</title>
-      <link>http://localhost:8080/articles/003-add-tags-to-wintersmith-blog/</link>
-      <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/003-add-tags-to-wintersmith-blog/</guid>
+      <title>Developer Blog using wintersmith and github pages</title>
+      <link>http://stephanhoyer.github.com/articles/001-building-wintersmith-blog/</link>
+      <pubDate>Thu, 15 Nov 2012 08:11:00 +0100</pubDate>
+      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/001-building-wintersmith-blog/</guid>
       <author></author>
-      <description>&lt;p&gt;TODO!
+      <description>&lt;p&gt;For a long time, I want to be able to share some thoughts about life in a
+blog every now and than. I made serveral attempts to do so. I tried
+&lt;a href=&quot;http://tumblr.com&quot;&gt;tumblr&lt;/a&gt; but it wasn&apos;t as flexible as I need it. I tried 
+&lt;a href=&quot;http://octopress.org&quot;&gt;octopress&lt;/a&gt;, but i&apos;m not as
+familiar with ruby as I probably should be. Never tried wordpress, since it
+is to much overhead and written in bad ol&apos; php, which I want to avoid for
+reasons. Also I want to write my posts using a simple markup language like
+&lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;markdown&lt;/a&gt; or 
+&lt;a href=&quot;http://google.com&quot;&gt;restuctured text&lt;/a&gt;, 
+first for versioning in git, second for using my beloved vim for editing. 
+
+&lt;/p&gt;
+&lt;p&gt;Since I use node.js a while now, i searched for
+ports of octopress in node and found
+&lt;a href=&quot;https://github.com/jnordberg/wintersmith&quot;&gt;wintersmith&lt;/a&gt;, what i&apos;m using now.
+
+&lt;/p&gt;
+&lt;p&gt;It has great flexibility, is super simple to use and to extend. It works good
+on &lt;a href=&quot;http://pages.github.com/&quot;&gt;github pages&lt;/a&gt;, what i use as hosting.
+
+&lt;/p&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;p&gt;So here is how to setup. First you have to install
+&lt;a href=&quot;http://nodejs.org&quot;&gt;&lt;strong&gt;node.js&lt;/strong&gt;&lt;/a&gt; as showed on the node.js
+&lt;a href=&quot;http://nodejs.org&quot;&gt;homepage&lt;/a&gt;. Because of the awesomenes of 
+&lt;a href=&quot;http://npmjs.org&quot;&gt;&lt;strong&gt;npm&lt;/strong&gt;&lt;/a&gt;, installing wintersmith is easy:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install wintersmith -g&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That gives you - besides the library - a binary where you can run serveral
+tasks. First one is to create your blog:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ wintersmith &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; path/to/my-shiny-&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;-blog&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That creates a file stucture and some basic posts for you:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── config.json                site configuration &lt;span class=&quot;keyword&quot;&gt;and&lt;/span&gt; metadata
+├── contents
+│   ├── archive.md
+│   ├── articles               each article is a subfolder of articles
+│   │   ├── another-test
+│   │   │   └── index.md
+│   │   ├── bamboo-cutter
+│   │   │   ├── Taketori_Monogatari.jpg
+│   │   │   └── index.md
+│   │   ├── hello-world
+│   │   │   └── index.md
+│   │   └── red-herring
+│   │       ├── banana.jpg
+│   │       └── index.md
+│   ├── authors                &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; an author is set in an articles metadata it
+│   │   ├── baker.json         will be read from here
+│   │   └── the-wintersmith.json
+│   ├── css
+│   │   ├── github.css
+│   │   └── main.css
+│   ├── feed.json              json page that renders the rss feed to feed.xml
+│   ├── index.json
+└── templates
+    ├── archive.jade
+    ├── article.jade
+    ├── author.jade
+    ├── feed.jade
+    ├── index.jade
+    └── layout.jade&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can see that it really takes a few files to drive a wintersmith blog. Most
+of them are templates and the blog posts itself. Besides that there are config
+and CSS files.
+
+&lt;/p&gt;
+&lt;p&gt;Since &lt;em&gt;github&lt;/em&gt; serves the page from the base dir of the repo, we have to move
+the blog to a new directory I called &lt;code&gt;src&lt;/code&gt;
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mkdir src
+$ mv config.json contents templates src&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We want to see the blog in action, right? Cd to the &lt;code&gt;src&lt;/code&gt; directory and type
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ wintersmith preview&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and head to &lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt; in the browser. If all went right, you should see a
+blog with two example entries.
+
+&lt;/p&gt;
+&lt;p&gt;You want to test deployment to github, so you have to build the static
+html-files for your blog. In order to do so you have to change the build 
+directory to be the root dir of the repository. Therefor go to &lt;code&gt;config.json&lt;/code&gt;
+in the &lt;code&gt;src&lt;/code&gt; folder and add the following line above the &lt;code&gt;locals&lt;/code&gt;-section:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &quot;output&quot;: &quot;../&quot;,&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It tells wintersmith to create the files in your blog root directory which 
+will be our git root. Then you can start the build process:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ wintersmith build&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you didn&apos;t already have, create a git repository in the
+blog directory. Your directory structure should look like this now:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── .git
+├── archive.html
+├── css
+├── index.html
+├── articles
+├── feed.xml
+└── src&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then commit all your changes and push them to your shiny new
+created github repository called &lt;code&gt;your-github-name.github.com&lt;/code&gt;.
+
+&lt;/p&gt;
+&lt;p&gt;After that &lt;em&gt;github&lt;/em&gt; will send you a notification mail, if your website has
+been deployed. Then you can visit the new blog under
+&lt;a href=&quot;http://your-github-name.github.com&quot;&gt;http://your-github-name.github.com&lt;/a&gt;.
+
+&lt;/p&gt;
+&lt;p&gt;Now you can write your first blogpost. Simply create a new directory under
+&lt;code&gt;src/articles&lt;/code&gt; or use one of the example posts and change it appropriatly.
+
+&lt;/p&gt;
+&lt;h2&gt;Tweaks&lt;/h2&gt;
+&lt;h3&gt;Base URL&lt;/h3&gt;
+&lt;p&gt;As webdeveloper you know the problems that occur when using relativ links in
+images, css and js files and of cause links. Thats why you always want to use
+absolute urls. Wintersmith provides an environment variable called
+&lt;code&gt;locals.url&lt;/code&gt; which you can use in templates. The problem is, that it has to be
+different in preview mode (&lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt;) and build mode
+(&lt;a href=&quot;http://your-github-name.github.com&quot;&gt;http://your-github-name.github.com&lt;/a&gt;). I solved this using two different config
+files, the existing on for preview, and a tweaked one for build. When calling
+to build the site, you can specify a custom config file to use:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ wintersmith build -c config.build.json&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Using Stylus&lt;/h3&gt;
+&lt;p&gt;Since there are CSS preprocessors out there, you didn&apos;t want to work with
+plain CSS anymore, right? That&apos;s a problem already solved by
+&lt;code&gt;wintersmith-perian&lt;/code&gt; plugin. Simply install it via npm
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install wintersmith-perian -g&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After that you only need to tell wintersmith, that there is a new plugin to
+load by altering the config file and adding
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &quot;plugins&quot;: [
+    &quot;wintersmith-perian&quot;
+  ],&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;above the &lt;code&gt;locals&lt;/code&gt;-object. From now on, all files named &lt;code&gt;*.styl&lt;/code&gt; will be compiled
+to CSS live in preview mode and also during build step.
+
+&lt;/p&gt;
+&lt;p&gt;Hope this helps setting up the next awesome developer blog.
 &lt;/p&gt;
 </description>
     </item>
