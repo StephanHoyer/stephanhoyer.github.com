@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stephan Hoyer</title>
-    <atom:link href="http://stephanhoyer.github.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://stephanhoyer.github.com</link>
+    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://localhost:8080</link>
     <description>fun driven software development</description>
     <pubDate>Thu, 15 Nov 2012 08:11:00 +0100</pubDate>
     <generator>The mighty Wintersmith</generator>
     <language>en</language>
     <item>
       <title>Developer Blog using wintersmith and github pages</title>
-      <link>http://stephanhoyer.github.com/articles/001-building-wintersmith-blog/</link>
+      <link>http://localhost:8080/articles/001-building-wintersmith-blog/</link>
       <pubDate>Thu, 15 Nov 2012 08:11:00 +0100</pubDate>
-      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/001-building-wintersmith-blog/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/001-building-wintersmith-blog/</guid>
       <author></author>
       <description>&lt;p&gt;For a long time, I want to be able to share some thoughts about life in a
 blog every now and than. I made serveral attempts to do so. I tried
@@ -171,10 +171,218 @@ to CSS live in preview mode and also during build step.
 </description>
     </item>
     <item>
+      <title>Testing JavaScript with test'em</title>
+      <link>http://localhost:8080/articles/002-testing-js-with-testem/</link>
+      <pubDate>Thu, 22 Nov 2012 11:11:00 +0100</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/002-testing-js-with-testem/</guid>
+      <author></author>
+      <description>&lt;p&gt;Frontend JavaScript testing has always been painfull, that&apos;s why most people
+avoid it, although there writing tests for their backend code.
+
+&lt;/p&gt;
+&lt;p&gt;There are some pretty nice js-testing tools out there today but in most of
+them, you need to reload the browser every time you change code or tests. If
+you want to test on multiple browsers this can be awkward.
+
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/airportyh/testem&quot;&gt;&lt;strong&gt;Test&apos;em&lt;/strong&gt;&lt;/a&gt; tries to solve this flaw. 
+It&apos;s pretty much a meta testrunner. It enables you to run browser tests 
+automatically from the commandline.
+
+&lt;/p&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;p&gt;So here is how to setup. First you have to install
+&lt;a href=&quot;http://nodejs.org&quot;&gt;&lt;strong&gt;node.js&lt;/strong&gt;&lt;/a&gt; as showed on the node.js
+&lt;a href=&quot;http://nodejs.org&quot;&gt;homepage&lt;/a&gt;. Then install Test&apos;em via 
+&lt;a href=&quot;http://npmjs.org&quot;&gt;&lt;strong&gt;npm&lt;/strong&gt;&lt;/a&gt;:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install testem -g&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you should be able to run the test&apos;em command:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ testem&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you see something like the following, all is setup right:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TEST&lt;span class=&quot;string&quot;&gt;'EM '&lt;/span&gt;SCRIPTS!                                                                                    
+Open the URL below in a browser to connect.                                                          
+http:&lt;span class=&quot;comment&quot;&gt;//localhost:7357&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Basics&lt;/h2&gt;
+&lt;p&gt;For our first test we create a new directory called &lt;code&gt;testem&lt;/code&gt;:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mkdir testem
+$ cd testem&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you can start testem and attach a browser to
+&lt;a href=&quot;http://localhost:7357&quot;&gt;localost:7357&lt;/a&gt;. You can now hide this window, because
+all feedback of the testrunner is also given in the test&apos;em command line
+interface. If you open it up, you can see a tab for each browser you attached
+to test&apos;em.
+
+&lt;/p&gt;
+&lt;p&gt;Try to add at least one other browser to test&apos;em.
+
+&lt;/p&gt;
+&lt;p&gt;Now it&apos;s time to write our first test. Create a file name &lt;code&gt;test_hello.js&lt;/code&gt; in
+the project root. Add the following code to the file:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// test_hello.js&lt;/span&gt;
+describe(&lt;span class=&quot;string&quot;&gt;'hello'&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(){
+  it(&lt;span class=&quot;string&quot;&gt;'should say hello'&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(){
+    expect(hello).toBeDefined();
+  });
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you save file, test&apos;em will automatically reload the browser and run the
+test. Since there is no &lt;code&gt;hello&lt;/code&gt; variable defined, the tests fails as expected.
+
+&lt;/p&gt;
+&lt;p&gt;So lets create a new file with the implemantation. Therefore create a file
+named &lt;code&gt;hello.js&lt;/code&gt; in the root of our project that contains:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// hello.js&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; hello() {
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The test should be green. So let&apos;s complete this simple method be adding
+another expectation:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// test_hello.js&lt;/span&gt;
+describe(&lt;span class=&quot;string&quot;&gt;'hello'&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(){
+  it(&lt;span class=&quot;string&quot;&gt;'should say hello'&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(){
+    expect(hello).toBeDefined();
+    expect(hello()).toEqual(&lt;span class=&quot;string&quot;&gt;'hello'&lt;/span&gt;);
+  });
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In save, the tests should again fail. So change the implementation according
+to the expectation:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// hello.js&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; hello() {
+  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'hello'&lt;/span&gt;;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&apos;s it, tests are green again.
+
+&lt;/p&gt;
+&lt;h2&gt;Extended usage&lt;/h2&gt;
+&lt;h3&gt;Other testing framework&lt;/h3&gt;
+&lt;p&gt;Frist thing we want to change is the testrunner. Since I use
+&lt;a href=&quot;http://visionmedia.github.com/mocha/&quot;&gt;&lt;strong&gt;mocha&lt;/strong&gt;&lt;/a&gt; and
+&lt;a href=&quot;https://github.com/LearnBoost/expect.js&quot;&gt;&lt;strong&gt;expect.js&lt;/strong&gt;&lt;/a&gt; on server side I 
+want to be able to also use it in browser tests.
+
+&lt;/p&gt;
+&lt;p&gt;Therefore we have to create a test&apos;em configuration file called &lt;code&gt;testem.json&lt;/code&gt;:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// testem.json&lt;/span&gt;
+{
+    &lt;span class=&quot;string&quot;&gt;&quot;framework&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;mocha&quot;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You have to restart the server so the new configuration is loaded. The tests
+are failing now expect.js is not build in to mocha and have to be included
+seperatly. Download expect.js to the projects root
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ wget https:&lt;span class=&quot;comment&quot;&gt;//raw.github.com/LearnBoost/expect.js/master/expect.js&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Expect.js&apos;s syntax is a little bit different from jasmin&apos;s so we have to
+change this:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// test_hello.js&lt;/span&gt;
+describe(&lt;span class=&quot;string&quot;&gt;'hello'&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(){
+  it(&lt;span class=&quot;string&quot;&gt;'should say hello'&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(){
+    expect(hello).to.a(&lt;span class=&quot;string&quot;&gt;'function'&lt;/span&gt;);
+    expect(hello()).to.be(&lt;span class=&quot;string&quot;&gt;'hello'&lt;/span&gt;);
+  });
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, test green again!
+
+&lt;/p&gt;
+&lt;h3&gt;Start browsers automaticaly&lt;/h3&gt;
+&lt;p&gt;It&apos;s odd to manually connect test&apos;em to each browser, right? So test&apos;em is
+able to do this automatically for you be either giving a command line option
+or, like we do now, changing the config:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// testem.json&lt;/span&gt;
+{
+    &lt;span class=&quot;string&quot;&gt;&quot;launch_in_dev&quot;&lt;/span&gt;: [&lt;span class=&quot;string&quot;&gt;&quot;Chrome&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Firefox&quot;&lt;/span&gt;],
+    &lt;span class=&quot;string&quot;&gt;&quot;framework&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;mocha&quot;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you restart test&apos;em server now, chrome and firefox should be started
+automatically.
+
+&lt;/p&gt;
+&lt;h3&gt;Collect files&lt;/h3&gt;
+&lt;p&gt;Normally js-files are not in the project root, so we have to change this be
+also altering the config file:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// testem.json&lt;/span&gt;
+{
+    &lt;span class=&quot;string&quot;&gt;&quot;launch_in_dev&quot;&lt;/span&gt;: [&lt;span class=&quot;string&quot;&gt;&quot;Chrome&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Firefox&quot;&lt;/span&gt;],
+    &lt;span class=&quot;string&quot;&gt;&quot;framework&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;mocha&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;src_files&quot;&lt;/span&gt;: [
+        &lt;span class=&quot;string&quot;&gt;&quot;js/**/*.js&quot;&lt;/span&gt;
+    ]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So now we can move all the files to a new directory called &lt;code&gt;js&lt;/code&gt; to clean up
+our project root.
+
+&lt;/p&gt;
+&lt;h3&gt;Using phantom js&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://phantomjs.org/&quot;&gt;PhantomJS&lt;/a&gt; is a Webkit-based headless browser. 
+It&apos;s really fast, since it does not have any UI. So it&apos;s great as a first 
+test target during development.
+
+&lt;/p&gt;
+&lt;p&gt;Test&apos;em will automatically use it if you have PhantomJS installed. To do so
+simply install it via npm:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install phantomjs&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then do a
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ testem launchers&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and verify that it&apos;s in the list.
+
+&lt;/p&gt;
+&lt;h3&gt;Console.log&lt;/h3&gt;
+&lt;p&gt;Try to make a &lt;code&gt;console.log()&lt;/code&gt; in any js file.
+
+&lt;/p&gt;
+&lt;h3&gt;Preprocessors&lt;/h3&gt;
+&lt;p&gt;It is also possible to let test&apos;em compile your
+&lt;a href=&quot;http://coffeescript.org/&quot;&gt;coffee&lt;/a&gt;/&lt;a href=&quot;http://www.typescriptlang.org/&quot;&gt;type-script&lt;/a&gt; 
+files before sending them to the browser. You only need to specify this in the
+config file:
+
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// testem.json&lt;/span&gt;
+{
+    &lt;span class=&quot;string&quot;&gt;&quot;framework&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;mocha&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;src_files&quot;&lt;/span&gt;: [
+        &lt;span class=&quot;string&quot;&gt;&quot;js/**/*.coffee&quot;&lt;/span&gt;
+    ],
+    &lt;span class=&quot;string&quot;&gt;&quot;before_tests&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;coffee -c *.coffee&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;serve_files&quot;&lt;/span&gt;: [
+        &lt;span class=&quot;string&quot;&gt;&quot;js/**/*.js&quot;&lt;/span&gt;
+    ],
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&apos;s it. Hope you are now testing all of your javascript code.
+&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Adding tags functionality to wintersmith blog</title>
-      <link>http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</link>
+      <link>http://localhost:8080/articles/003-add-tags-to-wintersmith-blog/</link>
       <pubDate>Tue, 15 Nov 2011 15:33:00 +0100</pubDate>
-      <guid isPermaLink="true">http://stephanhoyer.github.com/articles/002-add-tags-to-wintersmith-blog/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/003-add-tags-to-wintersmith-blog/</guid>
       <author></author>
       <description>&lt;p&gt;TODO!
 &lt;/p&gt;

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      <Testing JavaScript with test'em>-</Testing JavaScript with test'em>Stephan Hoyer
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="fun driven software development">
+    <link rel="stylesheet" href="http://localhost:8080/css/main.css">
+  </head>
+  <body>
+    <div class="main">
+      <div class="sidebar">
+        <div class="fixed-inner"><a href="http://localhost:8080"><img src="http://localhost:8080/images/logo.svg" alt="Stephan Hoyer"></a>
+          <h1>Stephan Hoyer</h1>
+          <div class="subheadline">fun driven software development</div>
+          <ul>
+            <li><i class="icon-bolt"></i><a href="http://localhost:8080">latest</a></li>
+            <li><i class="icon-calendar"></i><a href="http://localhost:8080/archive.html">by date</a></li>
+            <li><i class="icon-tag"></i><a href="http://localhost:8080/tags.html">by tags</a></li>
+            <li><i class="icon-user"></i><a href="#aboutme">about me</a></li>
+            <li><i class="icon-thumbs-up"></i><a href="mailto:ste.hoyer@gmail.com">hire me</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content"><a href="/" class="back"> <i class="icon-chevron-left"></i>&nbsp;back to index</a>
+        <h1>Testing JavaScript with test'em</h1>
+        <p>
+                  <p>tagged with<span> <a href="http://localhost:8080/tags.html#javascript">javascript</a></span><span> <a href="http://localhost:8080/tags.html#testing">testing</a></span></p><span class="author">by&nbsp;<a href="mailto:ste.hoyer@gmail.com">Stephan Hoyer</a></span>
+        </p>
+        <article class="post">
+          <section><p>Frontend JavaScript testing has always been painfull, that&apos;s why most people
+avoid it, although there writing tests for their backend code.
+
+</p>
+<p>There are some pretty nice js-testing tools out there today but in most of
+them, you need to reload the browser every time you change code or tests. If
+you want to test on multiple browsers this can be awkward.
+
+</p>
+<p><a href="https://github.com/airportyh/testem"><strong>Test&apos;em</strong></a> tries to solve this flaw. 
+It&apos;s pretty much a meta testrunner. It enables you to run browser tests 
+automatically from the commandline.
+
+</p>
+<h2>Setup</h2>
+<p>So here is how to setup. First you have to install
+<a href="http://nodejs.org"><strong>node.js</strong></a> as showed on the node.js
+<a href="http://nodejs.org">homepage</a>. Then install Test&apos;em via 
+<a href="http://npmjs.org"><strong>npm</strong></a>:
+
+</p>
+<pre><code>$ npm install testem -g</code></pre>
+<p>Now you should be able to run the test&apos;em command:
+
+</p>
+<pre><code>$ testem</code></pre>
+<p>If you see something like the following, all is setup right:
+
+</p>
+<pre><code>TEST<span class="string">'EM '</span>SCRIPTS!                                                                                    
+Open the URL below in a browser to connect.                                                          
+http:<span class="comment">//localhost:7357</span></code></pre>
+<h2>Basics</h2>
+<p>For our first test we create a new directory called <code>testem</code>:
+
+</p>
+<pre><code>$ mkdir testem
+$ cd testem</code></pre>
+<p>Now you can start testem and attach a browser to
+<a href="http://localhost:7357">localost:7357</a>. You can now hide this window, because
+all feedback of the testrunner is also given in the test&apos;em command line
+interface. If you open it up, you can see a tab for each browser you attached
+to test&apos;em.
+
+</p>
+<p>Try to add at least one other browser to test&apos;em.
+
+</p>
+<p>Now it&apos;s time to write our first test. Create a file name <code>test_hello.js</code> in
+the project root. Add the following code to the file:
+
+</p>
+<pre><code><span class="comment">// test_hello.js</span>
+describe(<span class="string">'hello'</span>, <span class="keyword">function</span>(){
+  it(<span class="string">'should say hello'</span>, <span class="keyword">function</span>(){
+    expect(hello).toBeDefined();
+  });
+});</code></pre>
+<p>If you save file, test&apos;em will automatically reload the browser and run the
+test. Since there is no <code>hello</code> variable defined, the tests fails as expected.
+
+</p>
+<p>So lets create a new file with the implemantation. Therefore create a file
+named <code>hello.js</code> in the root of our project that contains:
+
+</p>
+<pre><code><span class="comment">// hello.js</span>
+<span class="keyword">function</span> hello() {
+}</code></pre>
+<p>The test should be green. So let&apos;s complete this simple method be adding
+another expectation:
+
+</p>
+<pre><code><span class="comment">// test_hello.js</span>
+describe(<span class="string">'hello'</span>, <span class="keyword">function</span>(){
+  it(<span class="string">'should say hello'</span>, <span class="keyword">function</span>(){
+    expect(hello).toBeDefined();
+    expect(hello()).toEqual(<span class="string">'hello'</span>);
+  });
+});</code></pre>
+<p>In save, the tests should again fail. So change the implementation according
+to the expectation:
+
+</p>
+<pre><code><span class="comment">// hello.js</span>
+<span class="keyword">function</span> hello() {
+  <span class="keyword">return</span> <span class="string">'hello'</span>;
+}</code></pre>
+<p>That&apos;s it, tests are green again.
+
+</p>
+<h2>Extended usage</h2>
+<h3>Other testing framework</h3>
+<p>Frist thing we want to change is the testrunner. Since I use
+<a href="http://visionmedia.github.com/mocha/"><strong>mocha</strong></a> and
+<a href="https://github.com/LearnBoost/expect.js"><strong>expect.js</strong></a> on server side I 
+want to be able to also use it in browser tests.
+
+</p>
+<p>Therefore we have to create a test&apos;em configuration file called <code>testem.json</code>:
+
+</p>
+<pre><code><span class="comment">// testem.json</span>
+{
+    <span class="string">"framework"</span>: <span class="string">"mocha"</span>
+}</code></pre>
+<p>You have to restart the server so the new configuration is loaded. The tests
+are failing now expect.js is not build in to mocha and have to be included
+seperatly. Download expect.js to the projects root
+
+</p>
+<pre><code>$ wget https:<span class="comment">//raw.github.com/LearnBoost/expect.js/master/expect.js</span></code></pre>
+<p>Expect.js&apos;s syntax is a little bit different from jasmin&apos;s so we have to
+change this:
+
+</p>
+<pre><code><span class="comment">// test_hello.js</span>
+describe(<span class="string">'hello'</span>, <span class="keyword">function</span>(){
+  it(<span class="string">'should say hello'</span>, <span class="keyword">function</span>(){
+    expect(hello).to.a(<span class="string">'function'</span>);
+    expect(hello()).to.be(<span class="string">'hello'</span>);
+  });
+});</code></pre>
+<p>Ok, test green again!
+
+</p>
+<h3>Start browsers automaticaly</h3>
+<p>It&apos;s odd to manually connect test&apos;em to each browser, right? So test&apos;em is
+able to do this automatically for you be either giving a command line option
+or, like we do now, changing the config:
+
+</p>
+<pre><code><span class="comment">// testem.json</span>
+{
+    <span class="string">"launch_in_dev"</span>: [<span class="string">"Chrome"</span>, <span class="string">"Firefox"</span>],
+    <span class="string">"framework"</span>: <span class="string">"mocha"</span>
+}</code></pre>
+<p>If you restart test&apos;em server now, chrome and firefox should be started
+automatically.
+
+</p>
+<h3>Collect files</h3>
+<p>Normally js-files are not in the project root, so we have to change this be
+also altering the config file:
+
+</p>
+<pre><code><span class="comment">// testem.json</span>
+{
+    <span class="string">"launch_in_dev"</span>: [<span class="string">"Chrome"</span>, <span class="string">"Firefox"</span>],
+    <span class="string">"framework"</span>: <span class="string">"mocha"</span>,
+    <span class="string">"src_files"</span>: [
+        <span class="string">"js/**/*.js"</span>
+    ]
+}</code></pre>
+<p>So now we can move all the files to a new directory called <code>js</code> to clean up
+our project root.
+
+</p>
+<h3>Using phantom js</h3>
+<p><a href="http://phantomjs.org/">PhantomJS</a> is a Webkit-based headless browser. 
+It&apos;s really fast, since it does not have any UI. So it&apos;s great as a first 
+test target during development.
+
+</p>
+<p>Test&apos;em will automatically use it if you have PhantomJS installed. To do so
+simply install it via npm:
+
+</p>
+<pre><code>$ npm install phantomjs</code></pre>
+<p>Then do a
+
+</p>
+<pre><code>$ testem launchers</code></pre>
+<p>and verify that it&apos;s in the list.
+
+</p>
+<h3>Console.log</h3>
+<p>Try to make a <code>console.log()</code> in any js file.
+
+</p>
+<h3>Preprocessors</h3>
+<p>It is also possible to let test&apos;em compile your
+<a href="http://coffeescript.org/">coffee</a>/<a href="http://www.typescriptlang.org/">type-script</a> 
+files before sending them to the browser. You only need to specify this in the
+config file:
+
+</p>
+<pre><code><span class="comment">// testem.json</span>
+{
+    <span class="string">"framework"</span>: <span class="string">"mocha"</span>,
+    <span class="string">"src_files"</span>: [
+        <span class="string">"js/**/*.coffee"</span>
+    ],
+    <span class="string">"before_tests"</span>: <span class="string">"coffee -c *.coffee"</span>,
+    <span class="string">"serve_files"</span>: [
+        <span class="string">"js/**/*.js"</span>
+    ],
+}</code></pre>
+<p>That&apos;s it. Hope you are now testing all of your javascript code.
+</p>
+</section>
+          <div id="disqus_thread"></div>
+        </article><a href="/" class="back"> <i class="icon-chevron-left"></i>&nbsp;back to index</a>
+        <script type="text/javascript" async src="http://stephanhoyer.disqus.com/embed.js"></script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></noscript>
+        <div class="footer"><img src="http://localhost:8080/images/me.jpg" alt="Stephan Hoyer" class="me">
+          <div id="aboutme">
+            <h2>Stephan Hoyer</h2>
+            <p><p>I&apos;m a german software developer freelancing with various
+technologies, like 
+<a href="http://nodejs.org/">node.js</a>,
+<a href="https://www.djangoproject.com/">Django</a>,
+<a href="http://angularjs.org/">AngularJS</a>,
+<a href="http://www.magentocommerce.com/">magento</a>.
+I&apos;m passionate about <strong>git, open source technology</strong> and 
+<strong>test- or behaviour-driven development</strong>. I love my three 
+kids and I&apos;m an enthusiastic woodworker. I&apos;m also 
+cofounder of <a href="http://leipzigjs.github.com/">leipzigJS</a>.</p>
+
+            </p>
+            <p class="social-links"><a href="https://plus.google.com/110580991801747434649/posts/p/pub"><i class="icon-google-plus"></i></a>&nbsp;<a href="https://github.com/StephanHoyer"><i class="icon-github"></i></a>&nbsp;<a href="http://twitter.com/cmx66"><i class="icon-twitter"></i></a></p>
+            <p> <p>This site is hostet with github pages and was build using a 
+lot of <strong>awesome</strong> open source technology like 
+<a href="https://github.com/jnordberg/wintersmith">wintersmith</a>,
+<a href="http://nodejs.org/">node.js</a>,
+<a href="http://www.vim.org/">vim</a>,
+<a href="http://fortawesome.github.com/Font-Awesome/">font-awesome</a>,
+<a href="http://learnboost.github.com/stylus/">stylus</a> and
+<a href="http://jade-lang.com/">jade</a>. Thanks to the authors and
+contibutors.</p>
+
+            </p>
+            <p>&copy; 2012 Stephan Hoyer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
